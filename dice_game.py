@@ -16,21 +16,33 @@ class Die:
         return new_value
 
 
-# class Player:
+class Player:
 
-#     def __init__(self, die, counter, is_computer):
-#         self.die = die
-#         self.counter = counter
-#         self.is_computer = is_computer
+    def __init__(self, die, is_computer=False):
+        self._die = die
+        self._is_computer = is_computer
+        self._counter = 10
 
-#     def increment_counter(self):
-#         self.counter += 1
+    @property
+    def die(self):
+        return self._die
 
-#     def decrement_counter(self):
-#         self.counter -= 1
+    @property
+    def is_computer(self):
+        return self._is_computer
 
-#     def roll_die(self):
-#         pass
+    @property
+    def counter(self):
+        return self._counter
+
+    def increment_counter(self):
+        self._counter += 1
+
+    def decrement_counter(self):
+        self._counter -= 1
+
+    def roll_die(self):
+        return self._die.roll()
 
 
 # class DiceGame:
