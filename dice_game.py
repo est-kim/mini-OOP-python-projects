@@ -57,7 +57,9 @@ class DiceGame:
         print("====================================")
         while True:
             self.play_round()
-            #TODO: implement game over
+            game_over = self.check_game_over()
+            if game_over:
+                break
 
     def play_round(self):
 
@@ -99,7 +101,20 @@ class DiceGame:
         print(f"Computer counter: {self._computer.counter}")
 
     def check_game_over(self):
-        pass
+        if self._player.counter == 0:
+            self.show_game_over(self._player)
+            return True
+        elif self._computer.counter == 0:
+            self.show_game_over(self._computer)
+            return True
+        else:
+            return False
+
+    def show_game_over(self, winner):
+        if winner.is_computer:
+            print("GAME OVER. The computer won the game. Sorry...")
+        else:
+            print("GAME OVER. You won the game!!! Congratulations!")
 
 
 player_die = Die()
