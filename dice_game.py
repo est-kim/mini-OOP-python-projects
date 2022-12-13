@@ -53,8 +53,9 @@ class DiceGame:
 
     def play(self):
         print("====================================")
-        print("   Welcome to Roll the Dice Game!   ")
+        print("🎲 Welcome to Roll the Dice Game! 🎲")
         print("====================================")
+        print("Instructions: Get to 0 to win the game!")
         while True:
             self.play_round()
             game_over = self.check_game_over()
@@ -85,20 +86,20 @@ class DiceGame:
         self.show_counters()
 
     def print_round_welcome(self):
-        print("============ New Round =============")
-        input("Press any key to roll the die!")
+        print("\n============ New Round =============")
+        input("Press any key to roll the die! 🎲")
 
     def show_dice(self, player_value, computer_value):
         print(f"Your die: {player_value}")
-        print(f"Computer die: {computer_value}")
+        print(f"Computer die: {computer_value}\n")
 
     def update_counters(self, winner, loser):
         winner.decrement_counter()
         loser.increment_counter()
 
     def show_counters(self):
-        print(f"Your counter: {self._player.counter}")
-        print(f"Computer counter: {self._computer.counter}")
+        print(f"\nYour score: {self._player.counter}")
+        print(f"Computer score: {self._computer.counter}")
 
     def check_game_over(self):
         if self._player.counter == 0:
