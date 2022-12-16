@@ -75,4 +75,35 @@ class Board:
             if self.game_board[i][2-i] == player.marker:
                 markers_count += 1
 
-        return markers_count 
+        return markers_count
+
+    def check_is_tie(self):
+        empty_counter = 0
+
+        for row in self.game_board:
+            empty_counter += row.count(Board.EMPTY_CELL) # check how many cells are 0 in list
+
+        return empty_counter == 0
+
+    def reset_board(self):
+        self.game_board = [[0, 0, 0],
+                            [0, 0, 0],
+                            [0, 0, 0]]
+                            
+
+#testing submit_move function and check_is_game_over
+# board = Board()
+# player = Player()
+
+# move1 = player.get_move()
+# move2 = player.get_move()
+# move3 = player.get_move()
+
+# board.print_board()
+
+# board.submit_move(player, move1)
+# board.submit_move(player, move2)
+# board.submit_move(player, move3)
+
+# board.print_board()
+# print(board.check_is_game_over(player, move3))
