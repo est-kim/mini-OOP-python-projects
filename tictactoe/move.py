@@ -11,7 +11,6 @@ class Move:
         try:
             return 1 <= self._value <= 9 and isinstance(self._value, int)
         except TypeError:
-            print("Please enter a valid integer between 1-9.")
             return False
 
     def get_row(self):

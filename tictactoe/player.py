@@ -35,10 +35,12 @@ class Player:
             move = Move(user_input)
             if move.is_valid():
                 break
+            else:
+                print("Please enter a valid integer between 1-9.")
         return move
 
     def get_computer_move(self):
         random_choice = randint(1, 9)
         move = Move(random_choice)
-        print("Computer move (1-9): ", move.value)
+        print("The computer picked", move.value)
         return move
