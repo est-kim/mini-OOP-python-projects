@@ -1,5 +1,3 @@
-# A tic-tac-toe game to play in the terminal
-
 class Move:
 
     def __init__(self, value):
@@ -10,7 +8,11 @@ class Move:
         return self._value
 
     def is_valid(self):
-        return 1 <= self._value <= 9 and isinstance(self._value, int)
+        try:
+            return 1 <= self._value <= 9 and isinstance(self._value, int)
+        except TypeError:
+            print("Please enter a valid integer between 1-9.")
+            return False
 
     def get_row(self):
         if self._value in (1, 2, 3):
@@ -27,10 +29,3 @@ class Move:
             return 1
         else:
             return 2
-
-
-class Player:
-    pass
-
-class Board:
-    pass
