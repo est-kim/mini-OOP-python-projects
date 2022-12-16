@@ -1,3 +1,7 @@
+from move import Move
+from player import Player
+
+
 class Board:
 
     EMPTY_CELL = 0
@@ -25,5 +29,50 @@ class Board:
     def print_board_with_positions(self):
         print("| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |")
 
-board = Board()
-board.print_board()
+    def submit_move(self, player, move):
+        row = move.get_row()
+        col = move.get_col()
+        value = self.game_board[row][col]
+
+        if value == Board.EMPTY_CELL:
+            self.game_board[row][col] = player.marker
+        else:
+            print("This position is already taken. Please enter another one.")
+
+    def check_is_game_over(self, player, last_move):
+        return ((self.check_row(player, last_move))
+                or (self.check_col(player, last_move))
+                or (self.check_diagonal(player))
+                or (self.check_diagonal_two(player)))
+
+    def check_row(self, player, last_move):
+        row_index = last_move.get_row()
+        board_row = self.game_board[row_index]
+
+        return board_row.count(player.marker) == 3
+
+    def check_col(self, player, last_move):
+        markers_count = 0
+        col_index = last_move.get_col()
+
+        for i in range(3):
+            if self.game_board[i][col_index] == player.marker:
+                markers_count += 1
+
+        return markers_count == 3
+
+    def check_diagonal(self, player):
+        markers_count = 0
+        for i in range(3):
+            if self.game_board[i][i] == player.marker:
+                markers_count += 1
+
+        return markers_count == 3
+
+    def check_diagonal_two(self, player):
+        markers_count = 0
+        for i in range(3):
+            if self.game_board[i][2-i] == player.marker:
+                markers_count += 1
+
+        return markers_count 
