@@ -14,11 +14,9 @@ class TicTacToeGame:
 
         board.print_board()
 
-        # Ask the user if user would like to play another round
         while True:
             # Get move, check tie, check game over
             while True:
-
                 player_move = player.get_move()
                 board.submit_move(player, player_move)
                 board.print_board()
@@ -38,7 +36,7 @@ class TicTacToeGame:
                         print("Oh no! The computer won. 🥺 Try again!")
                         break
 
-            play_again = input("Would you like to play again?\nEnter X for YES or O for NO").upper()
+            play_again = input("Would you like to play again?\nEnter X for YES or O for NO : ").upper()
 
             if play_again == "O":
                 print("Bye! Come back soon! 👋😀")
@@ -47,6 +45,7 @@ class TicTacToeGame:
                 self.start_new_round(board)
             else:
                 print("Your input was not valid but I'll assume you want to play again 👁👄👁")
+                self.start_new_round(board)
 
     def start_new_round(self, board):
         print("**************************")

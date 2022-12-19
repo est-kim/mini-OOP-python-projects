@@ -75,7 +75,7 @@ class Board:
             if self.game_board[i][2-i] == player.marker:
                 markers_count += 1
 
-        return markers_count
+        return markers_count == 3
 
     def check_is_tie(self):
         empty_counter = 0
@@ -89,7 +89,7 @@ class Board:
         self.game_board = [[0, 0, 0],
                             [0, 0, 0],
                             [0, 0, 0]]
-                            
+
 
 #testing submit_move function and check_is_game_over
 # board = Board()
